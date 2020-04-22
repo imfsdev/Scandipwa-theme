@@ -1,0 +1,166 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+:root {
+    --search-field-background: var(--secondary-base-color);
+    --search-field-visible-background: #fff;
+    --search-field-color: var(--secondary-base-color);
+    --search-field-border-color: var(--primary-divider-color);
+    --search-clear-background: var(--secondary-base-color);
+    --search-bar-width: 235px;
+    --search-bar-max-width: 250px;
+}
+
+.SearchField {
+    flex-grow: 1;
+    margin-top: -3px;
+    text-align: right;
+
+    @include after-mobile {
+        text-align: right;
+    }
+
+    &_isVisible {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &_isActive {
+        --search-bar-width: 250px;
+        --search-field-border-color: var(--primary-light-color);
+
+        @include tablet {
+            --search-bar-width: 235px;
+        }
+    }
+
+    &-Wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .btn-close {
+            font-size: 28px;
+            margin: -3px 5px 0;
+            color: #b1b0ab;
+        }
+    }
+
+    &-Input {
+        transition-property: opacity, background-color;
+        transition-duration: 200ms;
+
+        background-color: var(--search-field-background);
+        font-size: 16px;
+        border-radius: 15px;
+        width: 100%;
+        max-width: 0;
+        min-width: 0;
+        opacity: 1;
+        border-color: transparent;
+        border-width: 1px;
+        padding: {
+            top: 4px;
+            bottom: 5px;
+            left: 10px;
+        }
+
+        &:focus,
+        &:active {
+            --input-color: var(--search-field-color);
+        }
+
+        @include mobile {
+            max-width: 100%;
+        }
+
+        @include after-mobile {
+            transition-property: 'opacity, width, border';
+            width: var(--search-bar-width);
+            max-width: var(--search-bar-max-width);
+            border-radius: 0;
+        }
+    }
+
+    &-Placeholder {
+        padding-left: 12px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+
+        &_isActive {
+            padding-left: 0;
+            opacity: 0.7;
+        }
+
+        .Header-Button_type_flag {
+            margin-right: 15px;
+
+            img {
+                margin-top: 3px;
+            }
+
+            @include mobile {
+                display: none;
+            }
+        }
+
+        .free-shipping {
+            font-family: Georgia;
+            font-style: italic;
+            font-size: 12px;
+            color: #b1b0ab;
+
+            @include after-mobile {
+                display: block;
+            }
+
+            @include mobile {
+                display: none;
+            }
+        }
+
+        .SearchField-Input {
+            font-size: 13px;
+            font-style: italic;
+            @include after-mobile {
+                background-color: #ece7e4;
+            }
+        }
+
+        @include mobile {
+            &_showPlaceHolder {
+                .SearchField-Input {
+                    display: none;
+                }
+            }
+        }
+
+        .Header-Button_type_search {
+            img {
+                width: 16px;
+                margin-left: 10px;
+                margin-right: 5px;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}

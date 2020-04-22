@@ -1,0 +1,137 @@
+.ProductLinks {
+    @include desktop {
+        grid-column: 1 / span 2;
+    }
+
+    &-Wrapper {
+        // padding-bottom: 3rem;
+        // padding-top: 3rem;
+
+        @include mobile {
+            padding: 0;
+        }
+
+        @include tablet {
+            padding: 40px 0px;
+        }
+
+        @include before-desktop {
+            padding-top: 40px;
+        }
+
+        @include desktop {
+            padding-top: 40px;
+        }
+    }
+
+    &-Wrapper .Button.AddToCart.ProductLinks-AddToCart {
+        display: none;
+    }
+
+    &-List {
+        display: grid;
+
+        @include desktop {
+            grid-gap: 24px;
+            grid-template-columns: repeat(6, 190px);
+        }
+
+        @include before-desktop {
+            grid-gap: 18px;
+            grid-template-columns: repeat(6, 135px);
+        }
+
+        @include tablet {
+            grid-gap: 19px;
+            grid-template-columns: repeat(3, 130px);
+        }
+
+        @include mobile {
+            grid-gap: 8px;
+            grid-template-columns: repeat(4, 148px);
+        }
+    }
+
+    &-Title {
+        text-transform: uppercase;
+        font-weight: normal;
+        line-height: 1;
+        font-size: 16px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+
+        @include tablet {
+            padding: 1rem 0 3rem;
+        }
+    }
+
+    .Image_imageStatus_1 {
+        mix-blend-mode: multiply;
+    }
+
+    &-ExpandableContentContent {
+        display: grid;
+
+        @include after-mobile {
+            grid-template-columns: 30px 1fr 30px;
+        }
+
+        @include mobile {
+            grid-template-columns: 5px auto 5px;
+        }
+    }
+
+    &-Arrow {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        @include desktop {
+            width: 15px;
+        }
+
+        @include before-desktop {
+            width: 10px;
+        }
+
+        @include tablet {
+            width: 8px;
+        }
+
+        @include mobile {
+            width: 5px;
+        }
+    }
+
+    &-AddToCart {
+        display: block;
+        background: hsla(0, 0%, 100%, 0.7);
+        color: #444;
+        bottom: 0;
+        width: 100%;
+        min-width: 0;
+        padding: 0.7rem 0;
+        height: 35px;
+        border: 0;
+        margin-top: -35px;
+        font-weight: normal;
+
+        @include mobile {
+            font-size: 10px;
+        }
+
+        @include tablet {
+            font-size: 10px;
+        }
+
+        @include before-desktop {
+            font-size: 10px;
+        }
+
+        @include desktop {
+            font-size: 15px;
+        }
+    }
+}

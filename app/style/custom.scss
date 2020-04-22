@@ -1,0 +1,38 @@
+.NavigationTabs {
+    @include mobile() {
+        display: none;
+    }
+}
+
+.ExpandableContent-Heading {
+    @include mobile() {
+        font-size: 13px;
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+}
+
+.ExpandableContent-Button:after,
+.ExpandableContent-Button:before {
+    height: 12px;
+    width: 2px;
+    background-color: #979797;
+}
+
+.CartPage {
+    padding-bottom: 10px !important;
+}
+
+.CartPage-Summary {
+    @include mobile() {
+        bottom: 0 !important;
+    }
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}

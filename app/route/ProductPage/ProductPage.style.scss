@@ -1,0 +1,92 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+.ProductPage {
+    @include after-mobile {
+        padding-top: 1rem;
+    }
+
+    &-Wrapper {
+        display: grid;
+
+        grid-template-rows: min-content min-content;
+
+        @include desktop {
+            max-width: 1260px;
+            min-height: 848px;
+            grid-column-gap: 14px;
+            grid-template-columns: 665px 557px;
+        }
+
+        @include before-desktop {
+            max-width: 904px;
+            min-height: 570px;
+            grid-column-gap: 20px;
+            grid-template-columns: 452px 432px;
+        }
+
+        @include mobile {
+            grid-template-columns: 100%;
+            padding: 0;
+        }
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+        }
+
+        > .RelatedProducts {
+            display: none;
+
+            @include mobile {
+                ul > li {
+                    width: 148px;
+                    height: 214px;
+                }
+            }
+
+            @include desktop {
+                display: block;
+            }
+        }
+    }
+
+    &-TitleSection {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        color: #b1b0ab;
+
+        @include desktop {
+            display: none;
+        }
+
+        @include before-desktop {
+            display: none;
+        }
+
+        @include mobile {
+            padding: 0 1rem;
+        }
+
+        @include tablet {
+            padding: 0px;
+        }
+    }
+
+    &-Title {
+        font-family: Georgia;
+        font-size: 14px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+}

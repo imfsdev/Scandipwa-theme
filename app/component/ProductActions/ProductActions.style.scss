@@ -1,0 +1,522 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+:root {
+    --product-actions-option-border-color: #979797;
+    --product-actions-selected-option-border-color: #f26323;
+    --product-brand-heading-color: #adadad;
+    --button-background: #000000;
+    --button-border: #000000;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    @include after-mobile {
+        --product-actions-option-border-color: #adadad;
+    }
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.ProductActions {
+    --swatch-type-size: 40px;
+
+    // @include after-mobile {
+    //     --swatch-type-size: 35px;
+
+    //     display: flex;
+    //     flex-flow: row wrap;
+    //     height: max-content;
+    // }
+
+    @include mobile {
+        display: grid;
+        align-items: center;
+    }
+
+    @include tablet {
+        display: grid;
+        align-items: center;
+    }
+
+    &-AddToCart {
+        padding: 0 !important;
+        height: 35px;
+        min-width: 124px;
+        margin-left: 20px;
+        text-align: center;
+    }
+
+    &-AddToCart:focus {
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+
+    &-AddToCartWrapper {
+        order: unset;
+
+        @include mobile {
+            padding: 1rem 1rem 2rem;
+            z-index: 85;
+            position: relative;
+            width: 100%;
+            background: var(--header-background);
+            // border-bottom: 1px solid var(--primary-divider-color);
+        }
+
+        @include tablet {
+            padding: 0;
+        }
+
+        @include desktop {
+            padding: 0px 6px;
+        }
+
+        @include before-desktop {
+            padding: 0;
+        }
+
+        .title {
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-family: Georgia;
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        .wrapper {
+            @include mobile {
+                display: flex;
+                align-items: center;
+
+                .ProductWishlistButton {
+                    display: none;
+                }
+            }
+
+            @include tablet {
+                .ProductWishlistButton {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &-AdditionalButtons {
+        margin: 2rem 0 1rem;
+        flex-basis: 100%;
+
+        @include mobile {
+            // border-top: 1px solid var(--expandable-content-divider-color);
+            margin: 0 0 1rem;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        > * {
+            margin-right: 1rem;
+            margin-top: 1rem;
+
+            @include mobile {
+                margin: 1rem 1rem 0;
+                width: calc(100% - 2rem);
+                text-align: center;
+            }
+        }
+    }
+
+    &-AttributesWrapper {
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+
+        @include tablet {
+            width: 100%;
+            padding: 0px 170px;
+        }
+
+        &.animate {
+            animation: shake 820ms 0.5ms cubic-bezier(0.36, 0.07, 0.19, 0.97)
+                both;
+        }
+    }
+
+    &-Attributes {
+        @include mobile {
+            --product-configurable-attributes-content-padding: 0.5rem;
+            // --product-configurable-attributes-direction: center;
+            --option-margin: 0 0.5rem 1rem;
+
+            // display: grid;
+            // grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+        }
+
+        @include before-desktop {
+            --product-configurable-attributes-margin: 20px 78px 20px 0px;
+            --option-margin: 10px 10px 0px 0px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-basis: 100%;
+        }
+
+        @include desktop {
+            --product-configurable-attributes-margin: 16px 0px 20px 6px;
+            --option-margin: 10px 10px 0px 0px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-basis: 100%;
+        }
+
+        @include tablet {
+            --option-margin: 0 1rem 1rem 0;
+            padding: 0px !important;
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-basis: 100%;
+        }
+
+        // @include after-mobile {
+        //     --product-configurable-attributes-margin: 0 2rem 0 0;
+
+        //     display: flex;
+        //     flex-wrap: wrap;
+        //     flex-basis: 100%;
+        //     padding: 1.5rem calc(1rem - 5px);
+        // }
+
+        .ProductConfigurableAttributes-Expandable_size {
+            border-bottom: 0;
+        }
+
+        .ProductConfigurableAttributes-Expandable_color {
+            border-bottom: 0;
+            .ProductConfigurableAttributes-SwatchList {
+                overflow-x: scroll;
+                flex-wrap: nowrap;
+            }
+            .ProductAttributeValue-Color {
+                width: 115px;
+                height: 164px;
+                border-radius: 0;
+            }
+        }
+    }
+
+    &-Brand {
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--product-actions-option-border-color);
+        @include desktop {
+            display: none;
+        }
+
+        @include before-desktop {
+            display: none;
+        }
+    }
+
+    &-Colors {
+        grid-column-gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(min-content, 0));
+        flex-basis: 100%;
+        margin-bottom: 2rem;
+
+        @include after-mobile {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 0.5rem calc(1rem - 5px);
+        }
+    }
+
+    &-Color {
+        @include after-mobile {
+            margin: 6px;
+        }
+    }
+
+    &-GroupedItems {
+        // order: 3;
+
+        @include before-desktop {
+            padding: 1rem;
+        }
+
+        @include desktop {
+            margin-bottom: 2.5rem;
+        }
+    }
+
+    &-Material {
+        font-size: 14px;
+        @include mobile {
+            margin-left: 13px;
+            font-size: 13px;
+        }
+
+        @include tablet {
+            font-size: 13px;
+            margin-top: 20px;
+        }
+
+        @include desktop {
+            padding-top: 3px;
+        }
+    }
+
+    &-Price {
+        font-size: 14px;
+        font-family: Georgia;
+        align-items: center;
+        justify-content: center;
+        color: #b1b0ab;
+
+        + .ProductActions-Section_type_short {
+            @include mobile {
+                margin-top: -1rem;
+            }
+
+            @include tablet {
+                margin-top: 20px;
+            }
+        }
+
+        @include mobile {
+            padding-left: 1rem;
+            padding-top: 0;
+            padding-bottom: 2rem;
+        }
+
+        @include tablet {
+            padding-left: 1rem;
+            padding-top: 0;
+            padding-bottom: 2rem;
+        }
+
+        &:last-of-type {
+            @include desktop {
+                padding-top: 11px;
+            }
+
+            @include before-desktop {
+                padding-top: 22px;
+            }
+
+            @include tablet {
+                padding: 0px;
+            }
+        }
+    }
+
+    &-PlaceholderOption {
+        margin: 5px;
+        padding: 0 1rem;
+    }
+
+    &-Qty {
+        width: 60px;
+        height: 35px;
+        border: 1px solid #aba6a2;
+        border-radius: 0;
+        background-color: #ece7e5;
+        background-image: url(../../../../media/select_arrow.png);
+        background-repeat: no-repeat;
+        background-position: 35px center;
+        font-size: 13px;
+        padding: 0px 10px 5px;
+    }
+
+    &-Section {
+        padding-top: 11px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+
+        @include mobile {
+            padding: 1.5rem calc(1rem - 5px);
+            // border-top: 1px solid var(--expandable-content-divider-color);
+        }
+
+        @include tablet {
+            padding: 0px;
+        }
+
+        &_type {
+            &_related {
+                border-top: 0;
+                padding: 1.5rem 0;
+            }
+
+            &_short {
+                @include mobile {
+                    border-top: 0;
+                    padding-top: 0;
+                    // padding-top: .5rem;
+                }
+
+                @include after-mobile {
+                    flex-basis: 100%;
+                    padding: 20px 7px 20px 0px;
+                }
+            }
+
+            &_sku {
+                flex-basis: 100%;
+                font-size: 11px;
+                font-weight: bold;
+                color: var(--product-actions-option-border-color);
+                padding-top: 0;
+                padding-bottom: 0;
+
+                @include mobile {
+                    display: none;
+                }
+
+                @include tablet {
+                    padding: 60px 0px;
+                    margin-bottom: 0;
+                    // border-bottom: 1px solid
+                    //     var(--product-actions-option-border-color);
+                }
+
+                @include desktop {
+                    margin: 102px 0px 83px 0px;
+                }
+
+                @include before-desktop {
+                    margin: 18px 0px 10px 0px;
+                }
+            }
+
+            &_name {
+                flex-basis: 100%;
+                flex-direction: column;
+                text-align: left;
+
+                @include mobile {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &-SectionHeading {
+        width: 100%;
+        text-transform: uppercase;
+        margin: 0 5px 1rem;
+        font-weight: 600;
+        line-height: 1;
+
+        &_type {
+            &_related {
+                margin-left: 1rem;
+            }
+
+            &_brand {
+                @include after-mobile {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &-SectionContent {
+        margin: 0 5px;
+
+        &_type {
+            &_short {
+                &-name {
+                    @include mobile {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &-Section_type_name {
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &-ShortDescription {
+        @include mobile {
+            margin: 0 5px;
+            p {
+                font-size: 13px;
+                font-family: Georgia;
+                font-weight: normal;
+            }
+        }
+
+        @include tablet {
+            p {
+                font-size: 13px;
+                font-family: Georgia;
+                font-weight: normal;
+            }
+        }
+    }
+
+    &-Sku::after {
+        content: '•';
+        margin: 0 5px;
+    }
+
+    &-Title {
+        font-size: 16px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: normal;
+        color: #b1b0ab;
+    }
+
+    &-TextOption {
+        margin: 6px;
+        padding: 0 12px;
+        border: 1px solid var(--product-actions-option-border-color);
+
+        &_isSelected {
+            --product-actions-option-border-color: var(
+                --product-actions-selected-option-border-color
+            );
+        }
+    }
+
+    .ExpandableContent.ProductLinks {
+        .ProductLinks-Title {
+            display: none;
+        }
+    }
+}

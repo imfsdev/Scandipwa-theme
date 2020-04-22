@@ -1,0 +1,138 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+:root {
+    --product-configurable-attributes-direction: flex-start;
+    --product-configurable-attributes-margin: 0;
+    --product-configurable-attributes-content-padding: 0;
+
+    @include mobile {
+        --product-configurable-attributes-content-padding: 0.5rem 0.5rem 1.5rem;
+    }
+}
+
+.ProductConfigurableAttributes {
+    &-SwatchList,
+    &-DropDownList {
+        text-align: center;
+
+        @include after-mobile {
+            --option-size: 33px;
+        }
+    }
+
+    &-SwatchList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: var(--product-configurable-attributes-direction);
+        align-items: center;
+    }
+
+    &-DropDownList {
+        width: 100%;
+    }
+
+    &-Expandable_size,
+    &-Expandable_color {
+        margin: var(--product-configurable-attributes-margin);
+        @include tablet {
+            padding: 0;
+        }
+    }
+
+    &-Expandable_size {
+        .ExpandableContent-Content {
+            // padding: var(--product-configurable-attributes-content-padding);
+            padding: 0 0 3px 0;
+            max-height: none;
+            opacity: 1;
+        }
+
+        .ExpandableContent-Button:after,
+        .ExpandableContent-Button:before {
+            content: none;
+        }
+
+        .ProductAttributeValue-String {
+            display: flex;
+            width: 35px;
+            height: 35px;
+            min-height: 0;
+            line-height: 35px;
+            min-width: var(--option-size);
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #aba6a2;
+            color: #000;
+        }
+
+        .ProductAttributeValue-String:hover {
+            background-color: #ece7e4;
+        }
+        .ProductAttributeValue-String:focus {
+            outline: 5px auto -webkit-focus-ring-color;
+        }
+    }
+
+    &-ExpandableContentButton {
+        @include after-mobile {
+            min-height: 30px;
+        }
+    }
+
+    &-ExpandableContentHeading {
+        font-weight: normal;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        @include mobile {
+            font-size: 14px;
+        }
+
+        @include tablet {
+            font-size: 13px;
+        }
+    }
+
+    &-ExpandableContentSubHeading {
+        text-transform: capitalize;
+    }
+
+    &-ExpandableContentContent {
+        @include after-mobile {
+            // margin-bottom: 1rem;
+        }
+
+        &_isContentExpanded {
+            @include mobile {
+                padding: var(--product-configurable-attributes-content-padding);
+            }
+        }
+    }
+
+    &-SectionHeading {
+        font-size: 1.2em;
+        font-weight: 700;
+        line-height: 1;
+        margin: 0 0 1rem;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &-Placeholder {
+        animation: var(--placeholder-animation);
+        background-image: var(--placeholder-image);
+        background-size: var(--placeholder-size);
+        height: var(--option-size);
+        width: var(--option-size);
+        margin: var(--option-margin);
+    }
+}

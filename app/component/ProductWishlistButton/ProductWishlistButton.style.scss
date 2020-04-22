@@ -1,0 +1,51 @@
+:root {
+    --wishlist-heart-size: 12px;
+    --wishlist-heart-background: var(--primary-base-color);
+}
+
+.ProductWishlistButton {
+    --button-padding: 0;
+    --button-hover-background: transparent;
+    --button-hover-border: var(--primary-dark-color);
+
+    margin-left: 0.9rem;
+    vertical-align: middle;
+
+    &.Button {
+        border: 0;
+        margin-left: 2.4rem;
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+
+        @include mobile() {
+            text-align: right;
+        }
+    }
+
+    span {
+        color: #b1b0ab;
+        font-size: 14px;
+        margin-left: 10px;
+        text-transform: none;
+
+        @include mobile {
+            display: none;
+        }
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &_isInWishlist {
+        --wishlist-heart-background: #fff;
+        --button-hover-background: var(--primary-dark-color);
+        --button-hover-border: var(--primary-dark-color);
+    }
+
+    .add-wish {
+        width: 25px;
+        height: 23px;
+    }
+}

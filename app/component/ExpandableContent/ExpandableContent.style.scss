@@ -1,0 +1,161 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+:root {
+    --expandable-content-color: #000;
+    --expandable-content-divider-color: var(--primary-divider-color);
+    --product-actions-option-border-color: #979797;
+}
+
+@mixin expanded-content {
+    opacity: 1;
+    max-height: 100%;
+}
+
+.ExpandableContent {
+    &:first-of-type {
+        border-top: 0;
+    }
+
+    &:last-of-type {
+        // border-bottom: 1px solid var(--expandable-content-divider-color);
+    }
+
+    &-Button {
+        text-align: left;
+        width: 100%;
+        will-change: border-color;
+        min-height: var(--header-nav-height);
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0.5rem 1rem 0.5rem 0;
+        @include mobile {
+            padding: 0.5rem 1rem 0.5rem 1rem;
+        }
+
+        &::after,
+        &::before {
+            content: '';
+
+            position: absolute;
+            height: 7px;
+            width: 1px;
+            background-color: var(--expandable-content-color);
+            right: 1.5rem;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        &::before {
+            transform-origin: 50% 50%;
+            transform: scale(1);
+            transition: 200ms transform;
+            will-change: transform;
+        }
+
+        &::after {
+            transform-origin: 50% 50%;
+            transform: rotate(90deg);
+        }
+
+        &_isContentExpanded {
+            &::before {
+                transform: scale(0);
+            }
+        }
+    }
+
+    &-Heading,
+    &-SubHeading {
+        display: block;
+        color: var(--expandable-content-color);
+    }
+
+    &-Heading {
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.4;
+        text-transform: uppercase;
+        word-break: break-all;
+
+        // @include after-mobile {
+        //     cursor: auto;
+        //     font-size: 14px;
+        // }
+    }
+
+    &-SubHeading {
+        font-weight: 300;
+        font-size: 0.8rem;
+        line-height: 1.1;
+    }
+
+    &-Content {
+        // Disabled as it prevents z-index use inside
+        // will-change: max-height, padding, opacity;
+        transition-property: opacity;
+        transition-duration: 200ms;
+
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        margin-top: 0 !important;
+
+        @include mobile {
+            padding: 0 1rem;
+        }
+
+        &_isContentExpanded {
+            @include expanded-content;
+        }
+    }
+}
+
+.ExpandableContent.ProductLinks .ProductLinks-List {
+    grid-auto-flow: column;
+    overflow-x: auto;
+    justify-content: start !important;
+
+    @include desktop {
+        grid-template-columns: repeat(3, 142px);
+        grid-auto-columns: 30%;
+    }
+
+    @include before-desktop {
+        grid-template-columns: repeat(4, 84px);
+        grid-auto-columns: 30%;
+    }
+
+    @include tablet {
+        grid-template-columns: repeat(3, 115px);
+        grid-auto-columns: 30%;
+    }
+
+    @include mobile {
+        grid-template-columns: repeat(2, 148px);
+        grid-auto-columns: 30%;
+    }
+}
+
+.ExpandableContent.ProductInformation-Content {
+    border-top: 1px solid var(--expandable-content-divider-color);
+    border-bottom: 1px solid var(--expandable-content-divider-color);
+}
+
+.ExpandableContent.ProductLinks {
+    border-bottom: 1px solid var(--expandable-content-divider-color);
+    @include mobile {
+        margin-bottom: 1rem;
+    }
+}
